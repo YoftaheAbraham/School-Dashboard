@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import ButtonDefault from "../Buttons/ButtonDefault";
 import MultiSelect from "../FormElements/MultiSelect";
 import SelectGroupTwo from "../FormElements/SelectGroup/SelectGroupTwo";
@@ -35,14 +36,41 @@ const students = [
 ];
 
 const SubmitResultHelper = () => {
+    const [academicYear, setAcademicYear] = useState("");
+    const [term, setTerm] = useState("");
+
+    const handleTermSelect = (termID: string) => {
+        setTerm(termID)
+    }
+    const handleAcademicYearSelect = (termID: string) => {
+        setAcademicYear(termID)
+    }
+    useEffect(() => {
+        console.log(term)
+    }, [term])
     return (
         <div>
             <div className={`py-2 flex justify-between gap-3`}>
                 <div className="flex gap-1">
-                    <SelectGroupTwo />
-                    <SelectGroupTwo />
+                    <SelectGroupTwo handleSelect={handleAcademicYearSelect} options={[{
+                        text: "2017",
+                        value: "2017",
+                        selected: true
+                    }, {
+                        text: "2016",
+                        value: "2016"
+                    }]} />
+                    <SelectGroupTwo disabled={true} handleSelect={handleTermSelect} options={[{
+                        text: "Term 1",
+                        value: "662374hd676",
+                        selected: true
+                    }, {
+                        text: "Term 2",
+                        value: "6647381ejd834h"
+                    }]} />
+
                 </div>
-                <button className="flex w-full justify-center max-w-[230px] rounded-[7px] bg-primary p-[13px] font-medium text-white hover:bg-opacity-90">
+                <button className="flex w-full justify-center items-center max-w-[230px] rounded-[7px] bg-primary p-[13px] font-medium text-white hover:bg-opacity-90">
                     Submit Result
                 </button>
             </div>

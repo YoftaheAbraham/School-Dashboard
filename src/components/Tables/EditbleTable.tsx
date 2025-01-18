@@ -2,7 +2,6 @@
 import { Package } from "@/types/package";
 
 const EditableTable = ({ packageData, EditableField }: { packageData: Package[], EditableField: string }) => {
-  console.log("Package Data:", packageData);
   return (
     <div className="rounded-[10px] border border-stroke bg-white p-4 shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card sm:p-7.5">
       <div className="max-w-full overflow-x-auto no-scrollbar dark:scrollbar-thumb-dark-3 dark:scrollbar-track-gray-dark">

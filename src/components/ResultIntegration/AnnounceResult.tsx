@@ -1,7 +1,6 @@
 "use client";
 
-import ButtonDefault from "../Buttons/ButtonDefault";
-import MultiSelect from "../FormElements/MultiSelect";
+import { useEffect, useState } from "react";
 import SelectGroupTwo from "../FormElements/SelectGroup/SelectGroupTwo";
 import ReadOnlyTable from "../Tables/ReadOnlyTable";
 
@@ -74,11 +73,28 @@ const students = [
 ];
 
 const AnnounceResultHelper = () => {
+    const [termID, setTermID] = useState("")
+    const handleTermSelect = (value: string) => {
+        setTermID(value)
+    }
+
+    useEffect(() => {
+        console.log(termID)
+    }, [termID])
     return (
         <div>
             <div className={`py-2 flex justify-between gap-3`}>
-                <SelectGroupTwo />
-                <button className="flex w-full justify-center max-w-[230px] rounded-[7px] bg-primary p-[13px] font-medium text-white hover:bg-opacity-90">
+                <SelectGroupTwo handleSelect={handleTermSelect} options={[
+                    {
+                        text: "Term 1",
+                        value: "6637yd766T1"
+                    },
+                    {
+                        text: "Term 2",
+                        value: "6637yd766T2"
+                    }
+                ]} />
+                <button className="flex w-full justify-center items-center max-w-[230px] rounded-[7px] bg-primary p-[13px] font-medium text-white hover:bg-opacity-90">
                     Announce Result
                 </button>
             </div>
